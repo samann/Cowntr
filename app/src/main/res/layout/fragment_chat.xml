@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/chat_list_view"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_marginBottom="30dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/username_edit_text"
+            android:lines="1"
+            android:maxLines="1"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Enter your username"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/relativeLayout"
+            android:layout_below="@+id/username_edit_text"
+            android:layout_alignParentStart="true">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send"
+                android:id="@+id/send_msg_button"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"/>
+
+            <EditText
+                android:layout_width="272dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/msg_edit_text"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="Enter a message"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/send_msg_button"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
