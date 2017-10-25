@@ -138,8 +138,19 @@ public class CowCounterFragment extends Fragment {
     @AfterViews
     void setup() {
         teamTextView.setText(team);
-        blue.setText(Integer.toString(flex.getBlue()));
-        red.setText(Integer.toString(flex.getRed()));
+        updateTextFields(flex);
+    }
+
+    private void updateTextFields(TeamCount teamCount) {
+        blue.setText(Integer.toString(teamCount.getBlue()));
+        red.setText(Integer.toString(teamCount.getRed()));
+    }
+
+    private void updatePrefs() {
+        prefs.flexblue().put(flex.getBlue());
+        prefs.flexred().put(flex.getRed());
+        prefs.larosablue().put(larosa.getBlue());
+        prefs.larosared().put(larosa.getRed());
     }
 
     @Override
@@ -198,132 +209,168 @@ public class CowCounterFragment extends Fragment {
     void blueOneTapped() {
         if (!toggle) {
             flex.incBlue(1);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(1);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @LongClick(R.id.blue_one)
     void blueOneLong() {
         if (!toggle) {
             flex.incBlue(-1);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(-1);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @Click(R.id.red_one)
     void redOneTapped() {
         if (!toggle) {
             flex.incRed(1);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(1);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @LongClick(R.id.red_one)
     void redOneLong() {
         if (!toggle) {
             flex.incRed(-1);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(-1);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @Click(R.id.red_five)
     void redFiveTapped() {
         if (!toggle) {
             flex.incRed(5);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(5);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @Click(R.id.blue_five)
     void blueFiveTapped() {
         if (!toggle) {
             flex.incBlue(5);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(5);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @LongClick(R.id.red_five)
     void redFiveLongTapped() {
         if (!toggle) {
             flex.incRed(-5);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(-5);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @LongClick(R.id.blue_five)
     void blueFiveLongTapped() {
         if (!toggle) {
             flex.incBlue(-5);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(-5);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @Click(R.id.blue_field)
     void blueFieldTapped() {
         if (!toggle) {
             flex.incBlue(30);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(30);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @Click(R.id.red_field)
     void redFieldTapped() {
         if (!toggle) {
             flex.incRed(30);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(30);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @LongClick(R.id.blue_field)
     void blueFieldLongTapped() {
         if (!toggle) {
             flex.incBlue(-30);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(-30);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @LongClick(R.id.red_field)
     void redFieldLongTapped() {
         if (!toggle) {
             flex.incRed(-30);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(-30);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @Click(R.id.blue_grave)
@@ -331,12 +378,15 @@ public class CowCounterFragment extends Fragment {
         if (!toggle) {
             flex.setPrevBlue(flex.getBlue());
             flex.setBlue(0);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.setPrevBlue(larosa.getBlue());
             larosa.setBlue(0);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @Click(R.id.red_grave)
@@ -344,34 +394,43 @@ public class CowCounterFragment extends Fragment {
         if (!toggle) {
             flex.setPrevRed(flex.getRed());
             flex.setRed(0);
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.setPrevRed(larosa.getRed());
             larosa.setRed(0);
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @LongClick(R.id.blue_grave)
     void blueGraveyardLongTapped() {
         if (!toggle) {
             flex.setBlue(flex.getPrevBlue());
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.setBlue(larosa.getPrevBlue());
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     @LongClick(R.id.red_grave)
     void redGraveyardLongTapped() {
         if (!toggle) {
             flex.setRed(flex.getPrevRed());
+            updateTextFields(flex);
 //            teamFirebase.setValue(flex);
         } else {
             larosa.setRed(larosa.getPrevRed());
+            updateTextFields(larosa);
 //            teamFirebase.setValue(larosa);
         }
+        updatePrefs();
     }
 
     void switchCars() {
@@ -380,11 +439,9 @@ public class CowCounterFragment extends Fragment {
 //        teamFirebase = firebase.child(team);
         teamTextView.setText(team);
         if (!toggle) {
-            blue.setText(Integer.toString(flex.getBlue()));
-            red.setText(Integer.toString(flex.getRed()));
+            updateTextFields(flex);
         } else {
-            blue.setText(Integer.toString(larosa.getBlue()));
-            red.setText(Integer.toString(larosa.getRed()));
+            updateTextFields(larosa);
         }
         Toast.makeText(mApplication.getApplicationContext(), team, Toast.LENGTH_SHORT).show();
     }
