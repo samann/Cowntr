@@ -9,10 +9,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+//import com.firebase.client.DataSnapshot;
+//import com.firebase.client.Firebase;
+//import com.firebase.client.FirebaseError;
+//import com.firebase.client.ValueEventListener;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.App;
@@ -42,9 +42,9 @@ public class CowCounterFragment extends Fragment {
     @Pref
     CownterPrefs_ prefs;
 
-    Firebase firebase;
+//    Firebase firebase;
 
-    Firebase teamFirebase;
+//    Firebase teamFirebase;
 
     String team;
 
@@ -90,50 +90,48 @@ public class CowCounterFragment extends Fragment {
         team = teamFlex;
         flex = new TeamCount();
         larosa = new TeamCount();
-        firebase = new Firebase("https://tripmate.firebaseio.com/");
-        teamFirebase = firebase.child(team);
+//        firebase = new Firebase("https://tripmate.firebaseio.com/");
+//        teamFirebase = firebase.child(team);
 
         flex.setBlue(prefs.flexblue().get());
         flex.setRed(prefs.flexred().get());
         larosa.setBlue(prefs.larosablue().get());
         larosa.setRed(prefs.larosared().get());
 
-
-
         setHasOptionsMenu(true);
-        firebase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getChildren().iterator().hasNext()) {
-                    for (DataSnapshot next : dataSnapshot
-                            .getChildren()) {
-                        if (next.getKey().equalsIgnoreCase(teamFlex) &&
-                                !toggle) {
-                            flex = next.getValue(TeamCount.class);
-                            prefs.flexblue().put(flex.getBlue());
-                            prefs.flexred().put(flex.getRed());
-                            blue.setText(Integer.toString(prefs.flexblue()
-                                    .get()));
-                            red.setText(Integer.toString(prefs.flexred().get()));
-                        }
-                        if (next.getKey().equalsIgnoreCase
-                                (teamLaRosa) && toggle) {
-                            larosa = next.getValue(TeamCount.class);
-                            prefs.larosablue().put(larosa.getBlue());
-                            prefs.larosared().put(larosa.getRed());
-                            blue.setText(Integer.toString(prefs.larosablue()
-                                    .get()));
-                            red.setText(Integer.toString(prefs.larosared().get()));
-                        }
-                    }
-                }
-            }
+//        firebase.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.getChildren().iterator().hasNext()) {
+//                    for (DataSnapshot next : dataSnapshot
+//                            .getChildren()) {
+//                        if (next.getKey().equalsIgnoreCase(teamFlex) &&
+//                                !toggle) {
+//                            flex = next.getValue(TeamCount.class);
+//                            prefs.flexblue().put(flex.getBlue());
+//                            prefs.flexred().put(flex.getRed());
+//                            blue.setText(Integer.toString(prefs.flexblue()
+//                                    .get()));
+//                            red.setText(Integer.toString(prefs.flexred().get()));
+//                        }
+//                        if (next.getKey().equalsIgnoreCase
+//                                (teamLaRosa) && toggle) {
+//                            larosa = next.getValue(TeamCount.class);
+//                            prefs.larosablue().put(larosa.getBlue());
+//                            prefs.larosared().put(larosa.getRed());
+//                            blue.setText(Integer.toString(prefs.larosablue()
+//                                    .get()));
+//                            red.setText(Integer.toString(prefs.larosared().get()));
+//                        }
+//                    }
+//                }
+//            }
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//
+//            }
+//        });
     }
 
 
@@ -200,10 +198,10 @@ public class CowCounterFragment extends Fragment {
     void blueOneTapped() {
         if (!toggle) {
             flex.incBlue(1);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(1);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -211,10 +209,10 @@ public class CowCounterFragment extends Fragment {
     void blueOneLong() {
         if (!toggle) {
             flex.incBlue(-1);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(-1);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -222,10 +220,10 @@ public class CowCounterFragment extends Fragment {
     void redOneTapped() {
         if (!toggle) {
             flex.incRed(1);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(1);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -233,10 +231,10 @@ public class CowCounterFragment extends Fragment {
     void redOneLong() {
         if (!toggle) {
             flex.incRed(-1);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(-1);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -244,10 +242,10 @@ public class CowCounterFragment extends Fragment {
     void redFiveTapped() {
         if (!toggle) {
             flex.incRed(5);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(5);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -255,10 +253,10 @@ public class CowCounterFragment extends Fragment {
     void blueFiveTapped() {
         if (!toggle) {
             flex.incBlue(5);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(5);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -266,10 +264,10 @@ public class CowCounterFragment extends Fragment {
     void redFiveLongTapped() {
         if (!toggle) {
             flex.incRed(-5);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(-5);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -277,10 +275,10 @@ public class CowCounterFragment extends Fragment {
     void blueFiveLongTapped() {
         if (!toggle) {
             flex.incBlue(-5);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(-5);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -288,10 +286,10 @@ public class CowCounterFragment extends Fragment {
     void blueFieldTapped() {
         if (!toggle) {
             flex.incBlue(30);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(30);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -299,10 +297,10 @@ public class CowCounterFragment extends Fragment {
     void redFieldTapped() {
         if (!toggle) {
             flex.incRed(30);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(30);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -310,10 +308,10 @@ public class CowCounterFragment extends Fragment {
     void blueFieldLongTapped() {
         if (!toggle) {
             flex.incBlue(-30);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incBlue(-30);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -321,10 +319,10 @@ public class CowCounterFragment extends Fragment {
     void redFieldLongTapped() {
         if (!toggle) {
             flex.incRed(-30);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.incRed(-30);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -333,11 +331,11 @@ public class CowCounterFragment extends Fragment {
         if (!toggle) {
             flex.setPrevBlue(flex.getBlue());
             flex.setBlue(0);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.setPrevBlue(larosa.getBlue());
             larosa.setBlue(0);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -346,11 +344,11 @@ public class CowCounterFragment extends Fragment {
         if (!toggle) {
             flex.setPrevRed(flex.getRed());
             flex.setRed(0);
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.setPrevRed(larosa.getRed());
             larosa.setRed(0);
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -358,10 +356,10 @@ public class CowCounterFragment extends Fragment {
     void blueGraveyardLongTapped() {
         if (!toggle) {
             flex.setBlue(flex.getPrevBlue());
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.setBlue(larosa.getPrevBlue());
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
@@ -369,17 +367,17 @@ public class CowCounterFragment extends Fragment {
     void redGraveyardLongTapped() {
         if (!toggle) {
             flex.setRed(flex.getPrevRed());
-            teamFirebase.setValue(flex);
+//            teamFirebase.setValue(flex);
         } else {
             larosa.setRed(larosa.getPrevRed());
-            teamFirebase.setValue(larosa);
+//            teamFirebase.setValue(larosa);
         }
     }
 
     void switchCars() {
         toggle = !toggle;
         team = toggle ? teamLaRosa : teamFlex;
-        teamFirebase = firebase.child(team);
+//        teamFirebase = firebase.child(team);
         teamTextView.setText(team);
         if (!toggle) {
             blue.setText(Integer.toString(flex.getBlue()));

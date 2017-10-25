@@ -2,7 +2,7 @@ package droidowl.cowcounter;
 
 import android.app.Application;
 
-import com.firebase.client.Firebase;
+//import com.firebase.client.Firebase;
 
 import org.androidannotations.annotations.EApplication;
 
@@ -11,13 +11,13 @@ import org.androidannotations.annotations.EApplication;
  */
 @EApplication
 public class CowCounterApplication extends Application {
-    Firebase mFirebase;
+//    Firebase mFirebase;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Firebase.setAndroidContext(this);
-        mFirebase = new Firebase("https://tripmate.firebaseio.com/");
-        mFirebase.keepSynced(true);
+//        Firebase.setAndroidContext(this);
+//        mFirebase = new Firebase("https://tripmate.firebaseio.com/");
+//        mFirebase.keepSynced(true);
     }
 }
